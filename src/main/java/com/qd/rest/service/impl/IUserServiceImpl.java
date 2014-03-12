@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qd.rest.entity.User;
-import com.qd.rest.po.UserMapper;
+import com.qd.rest.mapper.UserMapper;
 import com.qd.rest.service.IUserService;
 
 @Repository(value = "userService")
@@ -21,8 +21,31 @@ public class IUserServiceImpl implements IUserService {
 	@Override
 	public List<User> find() {
 		// TODO Auto-generated method stub
-		String sql = "select * from user";
-		return userMapper.find(sql);
+		return userMapper.find();
+	}
+
+	@Override
+	public User findById(int id) {
+		// TODO Auto-generated method stub
+		return userMapper.findById(id);
+	}
+
+	@Override
+	public void saveUser(User user) {
+		// TODO Auto-generated method stub
+		userMapper.saveUser(user);
+	}
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		userMapper.updateUser(user);
+	}
+
+	@Override
+	public void deteteUser(int id) {
+		// TODO Auto-generated method stub
+		userMapper.deteteUser(id);
 	}
 
 }

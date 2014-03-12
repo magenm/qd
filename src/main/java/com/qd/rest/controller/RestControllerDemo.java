@@ -19,12 +19,19 @@ public class RestControllerDemo {
 	@Resource(name = "userService")
 	private IUserService userService;
 
-	@RequestMapping(value = "/user", method = RequestMethod.GET, produces = {
-			"application/xml", "application/json" })
+	@RequestMapping(value = "/userList", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public List<User> getUser() {
 		System.out.println("222");
-		return userService.find();
+		List<User> userList = userService.find();
+		System.out.println("userList:"+userList);
+		return userList;
+	}
+	
+	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public void addUser() {
+		System.out.println("addUser");
 	}
 
 	@RequestMapping(value = "/springcontent.htm", method = RequestMethod.GET)

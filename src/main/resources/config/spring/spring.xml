@@ -18,11 +18,6 @@
 		</property>
 	</bean>
 
-	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
-	<context:component-scan base-package="com.qd.rest.controller" />
-	<context:component-scan base-package="com.qd.rest.service" />
-	<context:component-scan base-package="com.qd.rest.po" />
-
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${driverClassName}"></property>
 		<property name="url" value="${jdbc.url}"></property>
@@ -44,12 +39,18 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+
+	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
+	<context:component-scan base-package="com.qd.rest.controller" />
+	<context:component-scan base-package="com.qd.rest.service" />
+	<context:component-scan base-package="com.qd.rest.mapper" />
+	
 	<!-- 可通过注解控制事务 -->
 	<tx:annotation-driven />
 
 	<!-- Mapper接口所在包名，Spring会自动查找其下的Mapper -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.qd.rest.po" />
+		<property name="basePackage" value="com.qd.rest.mapper" />
 	</bean>
 
 </beans>
